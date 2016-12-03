@@ -1,5 +1,4 @@
 class KeyPad(object):
-
     def __init__(self):
         self.x = 1
         self.y = 1
@@ -24,8 +23,8 @@ class KeyPad(object):
             if not self.isDeniedPosition(self.x + 1, self.y):
                 self.x += 1
 
-        self.x = max(0, min(self.x, self.size-1))
-        self.y = max(0, min(self.y, self.size-1))
+        self.x = max(0, min(self.x, self.size - 1))
+        self.y = max(0, min(self.y, self.size - 1))
 
     def isDeniedPosition(self, x, y):
         return (x + y * self.size) in self.denied_indexes
@@ -33,8 +32,8 @@ class KeyPad(object):
     def getCurrentKey(self):
         return self.keys[self.x + self.y * self.size]
 
-class WtfKeyPad(KeyPad):
 
+class WtfKeyPad(KeyPad):
     def __init__(self):
         self.x = 0
         self.y = 2
