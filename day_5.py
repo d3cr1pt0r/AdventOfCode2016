@@ -1,4 +1,4 @@
-import hashlib
+import hashlib, time
 
 def task_1():
     input = 'abbhdwsy'
@@ -42,5 +42,14 @@ def task_2():
 
     return ''.join(password)
 
+t1_1 = time.time()
 print task_1()
+t1_2 = time.time()
+
+t2_1 = time.time()
 print task_2()
+t2_2 = time.time()
+
+print 'Task 1:', (t1_2 - t1_1) * 1000.0
+print 'Task 2:', (t2_2 - t2_1) * 1000.0
+print 'Together: ', (t2_2 - t1_1) * 1000.0
