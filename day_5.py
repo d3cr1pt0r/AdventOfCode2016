@@ -10,7 +10,7 @@ def task_1():
         h = hashlib.md5(input + str(index)).hexdigest()
         index += 1
         if h[:5] == '00000':
-            print 'Found character at index', index, 'with hash', h
+            print 'Character :', h[5], 'Hash:', h, 'Index:', index
             password += h[5]
 
     return password
@@ -27,13 +27,20 @@ def task_2():
         h = hashlib.md5(input + str(index)).hexdigest()
         index += 1
 
-        if h[:5] == '00000' and h[5].isdigit() and int(h[5]) < 8 and int(h[5]) not in filled_positions:
-            print 'Character position:', h[5], 'Character:', h[6], 'Hash:', h, 'Index:', index
-            characters_found += 1
-            filled_positions.append(int(h[5]))
-            password[int(h[5])] = h[6]
+        if h[:5] != '00000': continue
+        if not h[5].isdigit(): continue
+        if int(h[5]) >= 8: continue
+        if int(h[5]) in filled_positions: continue
 
-    return password
+        pos = int(h[5])
+        chr = h[6]
+
+        print 'Position:', pos, 'Character:', chr, 'Hash:', h, 'Index:', index
+        characters_found += 1
+        filled_positions.append(pos)
+        password[pos] = chr
+
+    return ''.join(password)
 
 print task_1()
 print task_2()
