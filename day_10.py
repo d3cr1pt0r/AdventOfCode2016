@@ -96,3 +96,4 @@ for line in input:
         bot_production.addCommandToBot(bot_id, command)
 
 bot_production.executeBotCommands()
+print bot_production.outputs[0] * bot_production.outputs[1] * bot_production.outputs[2]
