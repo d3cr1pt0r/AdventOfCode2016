@@ -32,8 +32,6 @@ def executeInstruction(command, p1, p2=None):
         return 1
     if command == 'jnz':
         if v1['value'] != 0:
-            if v2['value'] > 0:
-                return v2['value']
             return v2['value']
 
     return 1
