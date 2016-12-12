@@ -23,13 +23,10 @@ def executeInstruction(command, p1, p2=None):
 
     if command == 'cpy':
         registers[p2] = v1['value']
-        return 1
     if command == 'inc':
         registers[p1] += 1
-        return 1
     if command == 'dec':
         registers[p1] -= 1
-        return 1
     if command == 'jnz':
         if v1['value'] != 0:
             return v2['value']
