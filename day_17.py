@@ -11,22 +11,34 @@ def getPossibleOptions(x, y, input):
     open_chars = ['b', 'c', 'd', 'e', 'f']
     options = []
 
-    if hash[0] in open_chars and isValidPosition(x, y-1):
-        options.append('U')
-    if hash[1] in open_chars and isValidPosition(x, y+1):
-        options.append('D')
-    if hash[2] in open_chars and isValidPosition(x-1, y):
-        options.append('L')
-    if hash[3] in open_chars and isValidPosition(x+1, y):
-        options.append('R')
+    if hash[0] in open_chars and isValidPosition(x, y - 1):
+        options.append(('U', (x, y - 1)))
+    if hash[1] in open_chars and isValidPosition(x, y + 1):
+        options.append(('D', (x, y + 1)))
+    if hash[2] in open_chars and isValidPosition(x - 1, y):
+        options.append(('L', (x - 1, y)))
+    if hash[3] in open_chars and isValidPosition(x + 1, y):
+        options.append(('R', (x + 1, y)))
 
     return options
 
-input = 'ihgpwlah'
-path = []
-vault_found = False
-x = 0
-y = 0
+input = 'pxxbnzuo'
+queue = [(input, (0, 0), 0)]
+visited = set()
+max_dist = 0
+path_found = False
 
-while not vault_found:
-    options = getPossibleOptions(x, y, input)
+while len(queue) > 0:
+    data, pos, dist = queue.pop(0)
+
+    if pos[0] == 3 and pos[1] == 3:
+        if not path_found:
+            path_found = True
+            print 'Shortest path:', data.replace(input, '')
+        max_dist = dist
+        continue
+
+    for d, np in getPossibleOptions(pos[0], pos[1], data):
+        queue.append((data + d, np, dist + 1))
+
+print 'Max distance:', max_dist
