@@ -51,5 +51,15 @@ def part_2():
 
     print elves_keys
 
+def part_2_1():
+    target = 3018458
+    i = 1
+
+    while i * 3 < target:
+        i *= 3
+
+    print(target - i)
+
 #part_1()
-part_2()
+#part_2()
+part_2_1()
